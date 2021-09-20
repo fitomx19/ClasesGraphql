@@ -26,6 +26,7 @@ const typeDefs = `
     }
 
     input MascotaInput {
+        _id: ID
         nombre: String
         edad: Int
         mascota:String
@@ -34,9 +35,9 @@ const typeDefs = `
     type Mutation {
         createTask(input: TaskInput) : Task
         createMascotas(input: MascotaInput) : Mascota
+        updateMascotas(_id:ID , input: MascotaInput): Mascota
+        deleteMascotas(_id:ID): Mascota
     }
-
-   
 
 `
 

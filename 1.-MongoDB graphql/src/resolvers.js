@@ -1,5 +1,5 @@
 import { task } from "./sample";
-import Mascota from './Models/Mascotas'
+
 import Mascotas from "./Models/Mascotas";
 
 export const resolvers = {
@@ -30,10 +30,16 @@ export const resolvers = {
 
         },
         async createMascotas(_, {input}){
-            const nuevaMascota = Mascota(input)
+            const nuevaMascota = Mascotas(input)
             await nuevaMascota.save();
             console.log(nuevaMascota)
             return nuevaMascota
+        },
+        async updateMascotas(_, {_id,input}){
+            return await Mascotas.findByIdAndUpdate(_id , input , {new: true})
+        },
+        async deleteMascotas(_, {_id}){
+            return await Mascotas.findByIdAndDelete(_id)
         }
     }
 }
