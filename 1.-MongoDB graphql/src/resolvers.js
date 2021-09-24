@@ -31,8 +31,12 @@ export const resolvers = {
         },
         async createMascotas(_, {input}){
             const nuevaMascota = Mascotas(input)
-            await nuevaMascota.save();
-            console.log(nuevaMascota)
+            try {
+                await nuevaMascota.save();
+                console.log(nuevaMascota)
+            } catch (error) {
+                console.log(error)
+            }
             return nuevaMascota
         },
         async updateMascotas(_, {_id,input}){

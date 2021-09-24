@@ -31,10 +31,47 @@ app.get('/' , (req,res) =>{
         }
     }).then((result) =>{
         let datos = result.data.data;
-        console.log(datos)
+        //console.log(datos)
+        res.render("index", {data: datos} );
     });
-    res.send("hola mundo");
+   
 });
+
+
+app.post('/agregar-mascota', (req,res) => {
+    const body = req.body;
+    let {nombre,edad,mascota} = body;
+    let name = nombre;
+    let age = parseInt(edad); // convertir string => int 
+    let pet = mascota;
+    axios('http://localhost:8000/graphql',{
+        method: 'post', // metodo
+        data: { //parametros
+            query:  
+            `mutation($nombre:String! , $edad: Int , $mascota: String) {
+                createMascotas(input:{
+                nombre:$nombre,
+                edad: $edad,
+                mascota: $mascota
+                }) {
+                nombre
+                edad
+                _id
+                mascota
+                }
+            }
+            `,
+        variables: {
+            nombre:name,
+            edad:age,
+            mascota:pet
+        } 
+    }
+
+    }).catch(err => console.log(err));
+    res.redirect("/");
+
+})
 
 app.listen(port, () =>{
     console.log("Server funcionando")
