@@ -5,15 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel -src -d -dist --source-maps",
-    "start": "nodemon src/index.js --exec babel-node",
-    "serve": "node dist/index.js",
-    "clean": "rimraf dist"
+    "server": "nodemon src/index.js --exec babel-node",
+    "heroku-postbuild": "npm install",
+    "start": "babel-node src/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@babel/runtime": "^7.15.4",
+    "babel-node": "0.0.1-security",
+    "babel-preset-env": "^1.7.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "graphql": "^15.5.0",
@@ -24,9 +27,10 @@
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.4",
+    "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
     "@babel/preset-env": "^7.15.6",
     "nodemon": "^2.0.12"
   }

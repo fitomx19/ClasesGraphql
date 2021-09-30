@@ -5,6 +5,7 @@ import { connect } from "./database";
 
 const app = express();
 connect();
+app.set("port", process.env.PORT || 8000);
 
 app.get('/',(req,res)=>{
     res.json({
@@ -18,4 +19,6 @@ app.use('/graphql' , graphqlHTTP({
 }))
 
 
-app.listen(8000, () => console.log("server on port 8000"));
+app.listen(app.get("port"), () => {
+    console.log(`server on port ${app.get("port")}`);
+  });

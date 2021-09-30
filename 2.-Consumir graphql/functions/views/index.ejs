@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente Graphql</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">Mascotas</h2>
+        <table class="table">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Mascota</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <% for(var i=0; i < data.QueryMascotas.length; i++){ %>
+                        <th scope="row">
+                            <tr>
+                                <td><%= data.QueryMascotas[i]._id%></td>
+                                <td><%= data.QueryMascotas[i].nombre%></td>
+                                <td><%= data.QueryMascotas[i].edad%></td>
+                                <td><%= data.QueryMascotas[i].mascota%></td>
+                            </tr>
+                        </th>
+                    <%}%>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <h2 style="text-align:center">Registro de Mascotas</h2>
+        <form action="/agregar-mascota" method="POST">
+            <input class="form-control" type="text" name="nombre" placeholder="Introduce el nombre de la mascota">
+            <input class="form-control" type="number" min="0" name="edad" placeholder="Introduce la edad de tu mascota">
+            <input class="form-control" type="text" name="mascota" placeholder="Introduce que mascota es">
+            <input class="form-control btn btn-success" type="submit" value="Registrar">
+        </form>
+    </div>
+</body>
+</html>
