@@ -19,6 +19,8 @@
     "graphql": "^15.5.0",
     "graphql-tool": "^1.0.0",
     "graphql-tools": "^8.2.0",
+    "mongodb": "^4.1.2",
+    "mongoose": "^6.0.6",
     "rimraf": "^3.0.2"
   },
   "devDependencies": {
