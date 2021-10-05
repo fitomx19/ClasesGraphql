@@ -14,28 +14,33 @@ app.use(express.urlencoded({
     extended:false
 }))
 
+ 
 
 app.set("port", process.env.PORT || 8000);
 
 app.get('/' , (req,res) =>{
-    axios("https://servergraphqladolfo.herokuapp.com/graphql",{
+    axios("https://vast-garfish-89.hasura.app/v1/graphql",{
         method: 'post',
+        headers: {
+            'x-hasura-admin-secret' : "3A655mdStLR0oxPHnAZA7K7UetOjPXmhkpkghq3Qpg0YZFadtavQDU3XKGN1uj4T"
+         },
+      
         data: {
             query: `
             query{
-                QueryMascotas{
-                  _id
-                  nombre
-                  edad
-                  mascota
+                movie{
+                  genre
+                  budget
+                  original_title
+                  original_language
                 }
               }
             `
         }
     }).then((result) =>{
-        let datos = result.data.data;
-        //console.log(datos)
-        res.render("index", {data: datos} );
+        let datos = result
+        let info = datos.data.data.movie[0]
+        res.send({info} );
     });
    
 });
