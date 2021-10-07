@@ -9,6 +9,22 @@ export const resolvers = {
         },
         tienda(){
             return tienda;
+        },
+       
+        productos(){
+            return productos;
+        },
+        provedores(){
+            return proovedores;
         }
-    }
+    },
+  
+    Provedores:{
+        productos: ( parent ) =>{
+            return productos.filter( m =>{
+                return m.provedores === parent.id;
+            });
+        }
+}
+    
 }
