@@ -5,7 +5,7 @@ export const productos = [
         id: '1',
         nombre: "Galletas Emperador",
         precio: 15,
-        provedores: '1'
+        provedores: '1'     
     },
     {
         id: '2',

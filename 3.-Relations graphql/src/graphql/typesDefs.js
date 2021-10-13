@@ -10,6 +10,7 @@ export const typeDefs = `
         id: ID!
         sucursal: String!
         administrador: String!
+        provedores: [Provedores]
     }
     type Provedores {
         id: ID!

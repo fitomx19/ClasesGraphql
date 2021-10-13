@@ -24,7 +24,14 @@ export const resolvers = {
             return productos.filter( m =>{
                 return m.provedores === parent.id;
             });
+        }      //tienda => provedores => productos
+},
+    Tienda:{
+        provedores: ( parent ) =>{
+            return proovedores.filter( m =>{
+                return m.tienda === parent.id;
+            });
         }
-}
+    }
     
 }

@@ -3,11 +3,13 @@ export const tienda = [
     {
         id: '1',
         sucursal: 'Anzuelos',
-        administrador: 'Adolfo'
+        administrador: 'Adolfo',
+        provedores: '1'
     },
     {
         id: '2',
         sucursal: 'Vallejo',
-        administrador: 'Camps'
+        administrador: 'Camps',
+        provedores: '2'
     }
 ]
