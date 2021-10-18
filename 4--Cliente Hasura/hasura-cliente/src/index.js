@@ -3,12 +3,15 @@ import {ApolloProvider,ApolloClient,HttpLink,InMemoryCache,split} from '@apollo/
 import {getMainDefinition} from '@apollo/client/utilities';
 import { WebSocketLink} from '@apollo/link-ws';
 import { render } from '@testing-library/react';
+import Movies from './components/movies';
+import Usuario from './components/movies-users';
 
 const httpLink = new HttpLink({
       uri: `https://cines.hasura.app/v1/graphql`, headers:{
         'x-hasura-admin-secret': "JJwQ8PZD6FBJWPEpqjMqd6fGLmBNrkc6QCUwljjacgi55IKd3bukcvkS17f9hcQM"
       }
 });
+
 const wsLink = new WebSocketLink({
       uri: `ws://cines.hasura.app/v1/graphql`, options:{
         reconnect: true,
@@ -40,9 +43,16 @@ const client = new ApolloClient({
 
 
 const App = () => (
+    <>
     <ApolloProvider client={client}>
-      
+      <h2>Peliculas!</h2>
+        <Movies/>
+        <Usuario/>
     </ApolloProvider>
+     
+     
+    </>
+    
 ); 
 
 render(<App/> , document.getElementById("root"));
